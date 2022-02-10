@@ -5,13 +5,21 @@ import java.util.Scanner;
 public class Mapa {
 
 	public void crearMapa() {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner();
+		int[] dimensiones = new int[2];
+		Scanner sc = new Scanner(System.in);
+
+		dimensiones = crearDimensiones(sc);
+		
+		// TODO agregar resto de parametros
+		
+		System.out.println("Se creo una matriz de "
+		+ dimensiones[0] + " x " + dimensiones[1] + "!");
 		
 	}
 
-	static int[] leerTamanio(Scanner sc) {
+	private int[] crearDimensiones(Scanner sc) {
 		boolean datosValidos = false;
+		int[] dimensiones = new int[2];
 		System.out.println("Por favor ingrese el tamaño del mapa en el que\n"
 				+ "usted desea jugar. (Mínimo 8 x 8)");
 
@@ -27,6 +35,7 @@ public class Mapa {
 			}
 			System.out.println("Datos invalidos, por favor vuelva a ingresarlos");
 		}
+		return dimensiones;
 	}
 
 }

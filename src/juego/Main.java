@@ -29,15 +29,21 @@ public class Main {
 				System.out.println("Inicio modo de juego");
 				Mapa mapa = new Mapa();
 				Jugador jugador = new Jugador();
+				// Completo
 				jugador.pedirInfo(sc);
+				// Incompleto
 				mapa.crearMapa();
+				// No iniciado
 				jugador.jugar(mapa);
+				// Incompleto
 				entrada = jugador.infoPartida();
+				// Incompleto
 				historial = Historial.ordenarH(historial, entrada);
 				break;
 
 			case "Historial":
 				System.out.println("Acceso al historial");
+				// Incompleto
 				Historial.imprimirH(historial);
 				break;
 
@@ -53,6 +59,5 @@ public class Main {
 		for (int i = 0; i < 15; i++) {
 			System.out.println("");
 		}
-	}
-	
+	}	
 }
