@@ -35,4 +35,28 @@ public class Jugador {
 		//TODO
 		
 	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public int getPunteo() {
+		return punteo;
+	}
+	
+	public void setPunteo(int punteo) {
+		this.punteo = punteo;
+	}
+
+
+	public int getMovimientos() {
+		return movimientos;
+	}
+
+
+	public void setMovimientos(int movimientos) {
+		this.movimientos = movimientos;
+	}
 }

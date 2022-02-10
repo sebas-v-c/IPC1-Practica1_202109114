@@ -36,9 +36,9 @@ public class Main {
 				// No iniciado
 				jugador.jugar(mapa);
 				// Incompleto
-				entrada = jugador.infoPartida();
+//				entrada = jugador.infoPartida();
 				// Incompleto
-				historial = Historial.ordenarH(historial, entrada);
+				historial = Historial.ordenarH(historial, jugador.infoPartida());
 				break;
 
 			case "Historial":

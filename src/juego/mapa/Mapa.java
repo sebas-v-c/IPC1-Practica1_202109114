@@ -2,18 +2,21 @@ package juego.mapa;
 
 import java.util.Scanner;
 
+import juego.mapa.casillas.Casilla;
+
 public class Mapa {
+	private Casilla[][] mapa;
 
 	public void crearMapa() {
 		int[] dimensiones = new int[2];
 		Scanner sc = new Scanner(System.in);
 
 		dimensiones = crearDimensiones(sc);
-		
 		// TODO agregar resto de parametros
+		mapa = new Casilla[dimensiones[0]][dimensiones[1]]
 		
-		System.out.println("Se creo una matriz de "
-		+ dimensiones[0] + " x " + dimensiones[1] + "!");
+//		System.out.println("Se creo una matriz de "
+//		+ dimensiones[0] + " x " + dimensiones[1] + "!");
 		
 	}
 
