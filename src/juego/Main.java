@@ -13,7 +13,6 @@ public class Main {
 		int opcion;
 		Menu menu = new Menu();
 		Scanner sc = new Scanner(System.in);
-		Historial entrada = new Historial();
 		Historial[] historial = new Historial[10];
 
 		while (continuarJuego) {		
@@ -34,17 +33,15 @@ public class Main {
 				// Incompleto
 				mapa.crearMapa();
 				// No iniciado
-				jugador.jugar(mapa);
+//				jugador.jugar(mapa);
 				// Incompleto
-//				entrada = jugador.infoPartida();
-				// Incompleto
-				historial = Historial.ordenarH(historial, jugador.infoPartida());
+//				historial = Historial.ordenarH(historial, jugador.infoPartida());
 				break;
 
 			case "Historial":
 				System.out.println("Acceso al historial");
 				// Incompleto
-				Historial.imprimirH(historial);
+//				Historial.imprimirH(historial);
 				break;
 
 			case "Salir":

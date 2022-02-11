@@ -6,7 +6,7 @@ public class Historial {
 	private int puntaje;
 	private int movimientos;
 	
-	Historial(){
+	public Historial(){
 		puntaje = 0;
 		movimientos = 0;
 	}

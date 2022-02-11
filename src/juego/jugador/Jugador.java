@@ -21,7 +21,7 @@ public class Jugador {
 
 	public void pedirInfo(Scanner sc) {
 		System.out.print("Ingrese su nombre: ");
-		this.nombre = sc.nextLine(); 
+		this.nombre = sc.next(); 
 		System.out.print("Ingrese su edad: ");
 		this.edad = sc.nextInt(); 
 	}

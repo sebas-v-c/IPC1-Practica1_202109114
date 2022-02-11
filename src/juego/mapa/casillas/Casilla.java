@@ -1,15 +1,16 @@
 package juego.mapa.casillas;
 
 public class Casilla {
-	private int x;
-	private int y;
-	private char forma;
-	private boolean vacio = true;
+	protected int x;
+	protected int y;
+	protected String forma;
+	protected boolean vacio = true;
+	protected boolean casEspecial = false;
 
-	public char getForma() {
+	public String getForma() {
 		return forma;
 	}
-	public void setForma(char forma) {
+	public void setForma(String forma) {
 		this.forma = forma;
 	}
 	public int getX() {
@@ -29,6 +30,12 @@ public class Casilla {
 	}
 	public void setVacio(boolean vacio) {
 		this.vacio = vacio;
+	}
+	public boolean iscasEspecial() {
+		return casEspecial;
+	}
+	public void setcasEspecial(boolean cEspecial) {
+		this.casEspecial = cEspecial;
 	}
 
 }
