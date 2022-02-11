@@ -14,7 +14,10 @@ public class Jugador {
 	
 	public Historial infoPartida() {
 		Historial entrada = new Historial();
-		//TODO
+		entrada.setEdad(edad);
+		entrada.setNombre(nombre);
+		entrada.setPuntaje(punteo);
+		entrada.setMovimientos(movimientos);
 		return entrada;
 	}
 

@@ -8,9 +8,10 @@ public class Comida extends Casilla{
 	public Comida (int valor, String forma, int coordenadaX, int coordenadaY) {
 		this.valor = valor;
 		setForma(forma);
-		this.setVacio(false);
+		this.setVacia(false);
 		this.setX(coordenadaX);
 		this.setY(coordenadaY);
+		this.setRevisada(true);
 	}
 
 	public int getValor() {

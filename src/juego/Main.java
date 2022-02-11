@@ -13,7 +13,7 @@ public class Main {
 		int opcion;
 		Menu menu = new Menu();
 		Scanner sc = new Scanner(System.in);
-		Historial[] historial = new Historial[10];
+		Historial[] historial = new Historial[11];
 
 		while (continuarJuego) {		
 			menu.mostrarMenu();
@@ -28,20 +28,15 @@ public class Main {
 				System.out.println("Inicio modo de juego");
 				Mapa mapa = new Mapa();
 				Jugador jugador = new Jugador();
-				// Completo
 				jugador.pedirInfo(sc);
-				// Incompleto
 				mapa.crearMapa();
 				// No iniciado
-//				jugador.jugar(mapa);
-				// Incompleto
-//				historial = Historial.ordenarH(historial, jugador.infoPartida());
+				jugador.jugar(mapa);
+				historial = Historial.ordenarH(historial, jugador.infoPartida());
 				break;
 
 			case "Historial":
-				System.out.println("Acceso al historial");
-				// Incompleto
-//				Historial.imprimirH(historial);
+				Historial.imprimirH(historial);
 				break;
 
 			case "Salir":
@@ -53,8 +48,6 @@ public class Main {
 	}
 	
 	static void limpiarConsola() {
-		for (int i = 0; i < 15; i++) {
-			System.out.println("");
-		}
+		System.out.println("\n\n\n\n\n\n\n\n\n\n");
 	}	
 }

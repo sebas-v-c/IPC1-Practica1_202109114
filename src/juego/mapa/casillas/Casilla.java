@@ -4,8 +4,17 @@ public class Casilla {
 	protected int x;
 	protected int y;
 	protected String forma;
-	protected boolean vacio = true;
+	protected boolean vacia = true;
+	protected boolean revisada = false;
 	protected boolean casEspecial = false;
+	
+	public boolean isRevisada() {
+		return revisada;
+	}
+	
+	public void setRevisada(boolean revisada) {
+		this.revisada = revisada;
+	}
 
 	public String getForma() {
 		return forma;
@@ -25,11 +34,11 @@ public class Casilla {
 	public void setY(int y) {
 		this.y = y;
 	}
-	public boolean isVacio() {
-		return vacio;
+	public boolean isVacia() {
+		return vacia;
 	}
-	public void setVacio(boolean vacio) {
-		this.vacio = vacio;
+	public void setVacia(boolean vacio) {
+		this.vacia = vacio;
 	}
 	public boolean iscasEspecial() {
 		return casEspecial;

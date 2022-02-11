@@ -12,8 +12,6 @@ public class Mapa {
 	private int dimY;
 	private Casilla[][] mapa;
 	private Random rand = new Random();
-	// Esta variable se crea para generar el mapa
-	private boolean[][] visitada;
 	private final int PAREDES = 4;
 	private final int COMIDA = 100;
 
@@ -22,14 +20,11 @@ public class Mapa {
 
 		crearDimensiones(sc);
 		mapa = new Casilla[dimX][dimY];
-		visitada = new boolean[dimX][dimY];
-		// TODO agregar resto de parametros
 		// Llenar mapa con casillas internas vacias
 		for (int i = 1; i < dimX - 1; i++) {
 			for (int j = 1; j < dimY - 1; j++) {
 				mapa[i][j] = new Casilla();
 				mapa[i][j].setForma("   ");
-				visitada[i][j] = false;
 			}
 		}
 
@@ -37,8 +32,6 @@ public class Mapa {
 		for (int x = 0; x < dimX; x++) {
 			mapa[x][0] = new Pared("***");
 			mapa[x][dimY-1] = new Pared("***");
-			visitada[x][0] = true;
-			visitada[x][dimY-1] = true;
 		}
 		// Llenar paredes laterales
 		for (int y = 0; y < dimY; y++) {
@@ -46,23 +39,20 @@ public class Mapa {
 				Casilla especial = new Casilla();
 				especial.setcasEspecial(true);
 				especial.setForma(" ");
+				especial.setRevisada(true);
 				mapa[0][y] = especial;
 				mapa[dimX-1][y] = especial;
-				visitada[0][y] = true;
-				visitada[dimX-1][y] = true;
-				visitada[1][y] = true;
-				visitada[dimX-2][y] = true;
+				mapa[1][y].setRevisada(true);
+				mapa[dimX-2][y].setRevisada(true);
 				continue;
 			}
 			mapa[0][y] = new Pared("*");
 			mapa[dimX-1][y] = new Pared("*");
-			visitada[0][y] = true;
-			visitada[dimX-1][y] = true;
 		}
 		// Generamos paredes
 		for (int y = 1; y < (dimY-1); y++) {
 			for (int x = 1; x < (dimX-1); x++) {
-				if (!visitada[x][y]) {
+				if (!mapa[x][y].isRevisada()) {
 					generarPared(x, y);
 				}
 			}
@@ -90,17 +80,13 @@ public class Mapa {
 				mapa[pos[0]][pos[1]] = new Comida(10, " @ ", pos[0], pos[1]);
 			}
 		}
-		
-		
-		
-		imprimirMapa();
 	}	
 
 	private int[] posAleatoria() {
 		int[] pos = new int[2];
 		pos[0] = rand.nextInt(dimX);
 		pos[1] = rand.nextInt(dimY);
-		while (!mapa[pos[0]][pos[1]].isVacio()) {
+		while (!mapa[pos[0]][pos[1]].isVacia()) {
 			pos[0] = rand.nextInt(dimX);
 			pos[1] = rand.nextInt(dimY);
 		}
@@ -109,27 +95,26 @@ public class Mapa {
 
 	private void generarPared(int x, int y) {
 		int num = rand.nextInt(PAREDES);
-		visitada[x][y] = true;
 		int numVecin = contarVecinos(x, y);
 		int[][] vecinDisp = new int[numVecin][2];
 		int cont = 0;
 		// Llenamos una array con coordenadas de vecinos dispobiles
-		if (!visitada[x-1][y]) {
+		if (!mapa[x-1][y].isRevisada()) {
 			vecinDisp[cont][0] = x-1;
 			vecinDisp[cont][1] = y;
 			cont++;
 		}
-		if (!visitada[x][y-1]) {
+		if (!mapa[x][y-1].isRevisada()) {
 			vecinDisp[cont][0] = x;
 			vecinDisp[cont][1] = y-1;
 			cont++;
 		}
-		if (!visitada[x+1][y]) {
+		if (!mapa[x+1][y].isRevisada()) {
 			vecinDisp[cont][0] = x+1;
 			vecinDisp[cont][1] = y;
 			cont++;
 		}
-		if (!visitada[x][y+1]) {
+		if (!mapa[x][y+1].isRevisada()) {
 			vecinDisp[cont][0] = x;
 			vecinDisp[cont][1] = y+1;
 			cont++;
@@ -155,36 +140,38 @@ public class Mapa {
 			}
 			int posX = vecinDisp[vecino][0];
 			int posY = vecinDisp[vecino][1];
-			// Colocamos el resto de vecinos como visitados
+			// Colocamos el resto de vecinos como no vacios
 			for (int i = 0; i<numVecin; i++) {
-				visitada[vecinDisp[i][0]][vecinDisp[i][1]] = true;
+				mapa[vecinDisp[i][0]][vecinDisp[i][1]].setRevisada(true);
 			}
 			// modificamos la array principal para mostrar la pared
 			// Volvemos a probar suerte en la casilla que salio como candidata
+			mapa[x][y].setRevisada(true);
 			generarPared(posX, posY);
 		}
+		mapa[x][y].setRevisada(true);
 	}	
 	
 	
 	private int contarVecinos(int x, int y) {
 		int vecinos = 0;
-		if (!visitada[x-1][y]) {
+		if (!mapa[x-1][y].isRevisada()) {
 			vecinos++;
 		}
-		if (!visitada[x][y-1]) {
+		if (!mapa[x][y-1].isRevisada()) {
 			vecinos++;
 		}
-		if (!visitada[x+1][y]) {
+		if (!mapa[x+1][y].isRevisada()) {
 			vecinos++;
 		}
-		if (!visitada[x][y+1]) {
+		if (!mapa[x][y+1].isRevisada()) {
 			vecinos++;
 		}
 		
 		return vecinos;
 	}
 
-	private void imprimirMapa () {
+	public void imprimirMapa () {
 		for (int i  = 0; i < (dimY); i++) {
 			for (int j = 0; j < (dimX); j++) {
 				System.out.print(mapa[j][i].getForma());
