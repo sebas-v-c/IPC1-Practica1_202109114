@@ -31,7 +31,7 @@ public class Jugador {
 	public void pedirInfo() {
 		System.out.print("Ingrese su nombre: ");
 		this.nombre = sc.next(); 
-		if (this.nombre.isEmpty()) {
+		if (this.nombre.isBlank()) {
 			this.nombre = "XXXXXXX";
 		}
 		System.out.print("Ingrese su edad: ");
@@ -42,7 +42,7 @@ public class Jugador {
 	public void jugar(Mapa mapa) {
 		dimX = mapa.getDimX();
 		String letra;
-		System.out.println("Estoy jugando!");
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
 		System.out.println("Muevete con WASD");
 		System.out.println("(pulsa M para salir)");
 		pacman = new Pacman(" V ");
@@ -50,17 +50,21 @@ public class Jugador {
 
 		while (true) {
 			if (punteo <= 0) {
-				System.out.println("Perdiste, Juego terminado");
+				System.out.println("Perdiste, Juego terminado :(");
+				System.out.println("Ingresa cualquier cosa para continuar");
+				sc.next();
 				break;
 			} 
 			if (punteo > 100) {
-				System.out.println("Ganaste!");
+				System.out.println("Ganaste!" + nombre);
+				System.out.println("Ingresa cualquier cosa para continuar");
+				sc.next();
 				break;
 			}
 			imprimirInfo();
 			mapa.imprimirMapa();
-			System.out.print("Ingresa un Movimiento: ");
-			letra = sc.nextLine();		
+			System.out.print("Ingresa un Movimiento (WASD o M): ");
+			letra = sc.next();		
 			if (letra.equals("m") || letra.equals("M")) {
 				System.out.print("\nSeguro deseas selir del juego? (S/N): ");
 				letra = sc.nextLine();		
@@ -97,7 +101,7 @@ public class Jugador {
 	private void mover(Mapa mapa, int i, int j) {
 		int posX = pacman.getX();
 		int posY = pacman.getY();
-		Casilla sigCas = mapa.getCasilla(pacman, i+posX, j+posY);
+		Casilla sigCas = mapa.getCasilla(i+posX, j+posY);
 		System.out.println();
 		if (sigCas.isVacia()) {
 			mapa.cambiarCasillas(pacman, sigCas);

@@ -40,7 +40,7 @@ public class Mapa {
 			if (y == (dimY/2)) {
 				Casilla especial = new Casilla();
 				especial.setcasEspecial(true);
-				especial.setForma(" E ");
+				especial.setForma("   ");
 				especial.setRevisada(true);
 				especial.setVacia(false);
 				mapa[0][y] = especial;
@@ -86,7 +86,6 @@ public class Mapa {
 				colocarCasilla( new Comida(10, " @ "), 0, 0);
 			}
 		}
-//		imprimirMapa();
 	}	
 
 	public void colocarCasilla(Casilla casilla, int excpX, int excpY) {
@@ -232,9 +231,7 @@ public class Mapa {
 		}
 	}
 
-	public Casilla getCasilla(Pacman pacman, int x, int y) {
-		int posX = pacman.getX();
-		int posY = pacman.getY();
+	public Casilla getCasilla(int x, int y) {
 		if (x >= dimX) {
 			x -= 1;
 		} 
@@ -248,7 +245,6 @@ public class Mapa {
 			y += 1;
 		}
 
-		System.out.println(x + ", " + y);
 		mapa[x][y].setX(x);
 		mapa[x][y].setY(y);
 		return mapa[x][y];

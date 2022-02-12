@@ -26,12 +26,10 @@ public class Main {
 			limpiarConsola();
 			switch(menu.getModo()) {
 			case "Juego":
-				System.out.println("Inicio modo de juego");
 				Mapa mapa = new Mapa();
 				Jugador jugador = new Jugador();
 				jugador.pedirInfo();
 				mapa.crearMapa();
-				// No iniciado
 				jugador.jugar(mapa);
 				historial = Historial.ordenarH(historial, jugador.infoPartida());
 				break;
@@ -45,7 +43,7 @@ public class Main {
 				break;
 			}
 		}
-		System.out.println("Adiosito");
+		System.out.println("Adios!");
 	}
 	
 	static void limpiarConsola() {
