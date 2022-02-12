@@ -4,8 +4,8 @@ public class Menu {
 	private boolean opcValida = false;
 	private String modo;
 	
-	public void setModo(int opcion) {
-		if ((opcion != 1) && (opcion != 2) && (opcion != 3)) {
+	public void setModo(String opcion) {
+		if ((!opcion.equals("1")) && (!opcion.equals("2")) && (!opcion.equals("3"))) {
 			opcValida = false;
 			mostrarMenu();
 			System.out.println("Opcion invalida!");
@@ -14,13 +14,13 @@ public class Menu {
 		opcValida = true;
 
 		switch (opcion) {
-		case 1:
+		case "1":
 			modo = "Juego";
 			break;
-		case 2:
+		case "2":
 			modo = "Historial";
 			break;
-		case 3:
+		case "3":
 			modo = "Salir";
 			break;
 		}

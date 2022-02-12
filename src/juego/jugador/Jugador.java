@@ -62,12 +62,12 @@ public class Jugador {
 				sc.next();
 				break;
 			}
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			imprimirInfo();
 			mapa.imprimirMapa();
 			System.out.print("Ingresa un Movimiento (WASD o M): ");
-			letra = sc.next();		
-			if (letra.equals("m") || letra.equals("M")) {
+			letra = sc.nextLine();		
+			System.out.println(letra);
+			if (letra.equals("M") || letra.equals("m")) {
 				System.out.print("\nSeguro deseas selir del juego? (S/N): ");
 				letra = sc.nextLine();		
 				if (letra.equals("s") || letra.equals("S")) {

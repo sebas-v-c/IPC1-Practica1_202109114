@@ -10,7 +10,7 @@ import juego.menu.Menu;
 public class Main {
 	public static void main(String[] args) {
 		boolean continuarJuego = true;
-		int opcion;
+		String opcion;
 		Menu menu = new Menu();
 		Scanner sc = new Scanner(System.in);
 		Historial[] historial = new Historial[11];
@@ -19,7 +19,7 @@ public class Main {
 		while (continuarJuego) {		
 			menu.mostrarMenu();
 			while (!menu.opcValida()) {
-				opcion = sc.nextInt();
+				opcion = sc.next();
 				menu.setModo(opcion);
 			}	
 			
