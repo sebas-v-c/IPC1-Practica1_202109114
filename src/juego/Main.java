@@ -29,7 +29,7 @@ public class Main {
 				Mapa mapa = new Mapa();
 				Jugador jugador = new Jugador();
 				jugador.pedirInfo();
-				mapa.crearMapa();
+				mapa.crearMapa(sc);
 				jugador.jugar(mapa);
 				historial = Historial.ordenarH(historial, jugador.infoPartida());
 				break;
@@ -47,6 +47,6 @@ public class Main {
 	}
 	
 	static void limpiarConsola() {
-		System.out.println("\n\n\n\n\n\n\n\n\n\n");
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}	
 }

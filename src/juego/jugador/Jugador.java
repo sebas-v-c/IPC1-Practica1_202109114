@@ -29,6 +29,7 @@ public class Jugador {
 
 
 	public void pedirInfo() {
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		System.out.print("Ingrese su nombre: ");
 		this.nombre = sc.next(); 
 		if (this.nombre.isBlank()) {
@@ -36,13 +37,13 @@ public class Jugador {
 		}
 		System.out.print("Ingrese su edad: ");
 		this.edad = sc.nextInt(); 
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 
 
 	public void jugar(Mapa mapa) {
 		dimX = mapa.getDimX();
 		String letra;
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
 		System.out.println("Muevete con WASD");
 		System.out.println("(pulsa M para salir)");
 		pacman = new Pacman(" V ");
@@ -56,11 +57,12 @@ public class Jugador {
 				break;
 			} 
 			if (punteo > 100) {
-				System.out.println("Ganaste!" + nombre);
+				System.out.println("Ganaste! " + nombre);
 				System.out.println("Ingresa cualquier cosa para continuar");
 				sc.next();
 				break;
 			}
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			imprimirInfo();
 			mapa.imprimirMapa();
 			System.out.print("Ingresa un Movimiento (WASD o M): ");

@@ -14,23 +14,13 @@ public class Historial {
 		movimientos = 0;
 	}
 
-	// Algoritmo simple para ordenar las entradas del historial de menor a mayor
-	// Vamos a utilizar el metodo de burbuja
 	public static Historial[] ordenarH(Historial[] historial, Historial entrada) {
-	    boolean ordenado = false;
-	    Historial temp;
-	    historial[0] = entrada;
-	    while(!ordenado) {
-	        ordenado = true;
-	        for (int i = 0; i < 10; i++) {
-	            if (historial[i].getTotal() > historial[i+1].getTotal()) {
-	                temp = historial[i];
-	                historial[i] = historial[i+1];
-	                historial[i+1] = temp;
-	                ordenado = false;
-	            }
-	        }
+	    // Corremos el historial 1 a la izquierda
+	    for (int i = 1; i < 11; i++) {
+	    	historial[i-1] = historial[i];
 	    }
+	    historial[10] = entrada;
+	    
 		return historial;
 	}
 
@@ -83,7 +73,5 @@ public class Historial {
 		for (int i = 0; i < 11; i++) {
 			historial[i] = new Historial();
 		}
-
-		
 	}
 }

@@ -40,13 +40,13 @@ public class Menu {
 		for (int i = 0; i < 20; i++) {
 			System.out.println("");
 		}
-		System.out.println("**********************************");
-		System.out.println("*      BIENVENIDO A PAC-MAN!     *");
-		System.out.println("**********************************");
-		System.out.println("* 1. Jugar                       *");
-		System.out.println("* 2. Historial                   *");
-		System.out.println("* 3. Salir                       *");
-		System.out.println("**********************************");
+		System.out.println("*****************************************************");
+		System.out.println("*                BIENVENIDO A PAC-MAN!              *");
+		System.out.println("*****************************************************");
+		System.out.println("*   1. Jugar                                        *");
+		System.out.println("*   2. Historial                                    *");
+		System.out.println("*   3. Salir                                        *");
+		System.out.println("*****************************************************");
 	}
 	
 	

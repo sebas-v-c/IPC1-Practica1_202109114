@@ -16,8 +16,7 @@ public class Mapa {
 	private final int PAREDES = 4;
 	private final int COMIDA = 100;
 
-	public void crearMapa() {
-		Scanner sc = new Scanner(System.in);
+	public void crearMapa(Scanner sc) {
 
 		crearDimensiones(sc);
 		mapa = new Casilla[dimX][dimY];
