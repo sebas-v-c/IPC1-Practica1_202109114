@@ -14,6 +14,7 @@ public class Main {
 		Menu menu = new Menu();
 		Scanner sc = new Scanner(System.in);
 		Historial[] historial = new Historial[11];
+		Historial.llenar(historial);
 
 		while (continuarJuego) {		
 			menu.mostrarMenu();
@@ -28,7 +29,7 @@ public class Main {
 				System.out.println("Inicio modo de juego");
 				Mapa mapa = new Mapa();
 				Jugador jugador = new Jugador();
-				jugador.pedirInfo(sc);
+				jugador.pedirInfo();
 				mapa.crearMapa();
 				// No iniciado
 				jugador.jugar(mapa);

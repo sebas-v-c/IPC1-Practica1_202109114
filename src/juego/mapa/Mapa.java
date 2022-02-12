@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import juego.mapa.casillas.Casilla;
 import juego.mapa.casillas.comida.Comida;
+import juego.mapa.casillas.pacman.Pacman;
 import juego.mapa.casillas.pared.Pared;
 
 public class Mapa {
@@ -21,7 +22,7 @@ public class Mapa {
 		crearDimensiones(sc);
 		mapa = new Casilla[dimX][dimY];
 		// Llenar mapa con casillas internas vacias
-		for (int i = 1; i < dimX - 1; i++) {
+		for (int i = 2; i < dimX - 2; i++) {
 			for (int j = 1; j < dimY - 1; j++) {
 				mapa[i][j] = new Casilla();
 				mapa[i][j].setForma("   ");
@@ -35,23 +36,34 @@ public class Mapa {
 		}
 		// Llenar paredes laterales
 		for (int y = 0; y < dimY; y++) {
+			Casilla relleno = new Casilla();
 			if (y == (dimY/2)) {
 				Casilla especial = new Casilla();
 				especial.setcasEspecial(true);
-				especial.setForma(" ");
+				especial.setForma(" E ");
 				especial.setRevisada(true);
+				especial.setVacia(false);
 				mapa[0][y] = especial;
 				mapa[dimX-1][y] = especial;
-				mapa[1][y].setRevisada(true);
-				mapa[dimX-2][y].setRevisada(true);
+				relleno.setForma("   ");
+				relleno.setRevisada(true);
+				mapa[1][y] =  relleno;
+				mapa[dimX-2][y] = relleno;
+				mapa[2][y].setRevisada(true);
+				mapa[dimX-3][y].setRevisada(true);
 				continue;
 			}
-			mapa[0][y] = new Pared("*");
-			mapa[dimX-1][y] = new Pared("*");
+			relleno.setForma("   ");
+			relleno.setRevisada(true);
+			relleno.setVacia(false);
+			mapa[0][y] = relleno;
+			mapa[dimX-1][y] = relleno;
+			mapa[1][y] = new Pared("***");
+			mapa[dimX-2][y] = new Pared("***");
 		}
 		// Generamos paredes
 		for (int y = 1; y < (dimY-1); y++) {
-			for (int x = 1; x < (dimX-1); x++) {
+			for (int x = 2; x < (dimX-2); x++) {
 				if (!mapa[x][y].isRevisada()) {
 					generarPared(x, y);
 				}
@@ -59,38 +71,57 @@ public class Mapa {
 		}
 		// Vamos a establecer por lo menos la aparicion aleatoraia
 		// de 1 item de comida de cada uno
-		int[] pos = posAleatoria();
-		mapa[pos[0]][pos[1]] = new Comida(-10, " # ", pos[0], pos[1]);
-		pos = posAleatoria();
-		mapa[pos[0]][pos[1]] = new Comida(15, " $ ", pos[0], pos[1]);
-		pos = posAleatoria();
-		mapa[pos[0]][pos[1]] = new Comida(10, " @ ", pos[0], pos[1]);
+		colocarCasilla(new Comida(-10, " # "), 0, 0);
+		colocarCasilla(new Comida(15, " $ "), 0, 0);
+		colocarCasilla(new Comida(10, " @ "), 0, 0);
 		// Los demas items de comida seran aleatorios dependiendo del
 		// Tamanio de la matriz
 		for (int i = 0; i < dimX*dimY; i++) {
 			int num = rand.nextInt(COMIDA);
 			if (num == 0) {
-				pos = posAleatoria();
-				mapa[pos[0]][pos[1]] = new Comida(-10, " # ", pos[0], pos[1]);
+				colocarCasilla(new Comida(-10, " # "), 0, 0);
 			} else if (num == 1) {
-				pos = posAleatoria();
-				mapa[pos[0]][pos[1]] = new Comida(15, " $ ", pos[0], pos[1]);				
+				colocarCasilla( new Comida(15, " $ "), 0, 0);				
 			} else if (num == 2) {
-				pos = posAleatoria();
-				mapa[pos[0]][pos[1]] = new Comida(10, " @ ", pos[0], pos[1]);
+				colocarCasilla( new Comida(10, " @ "), 0, 0);
 			}
 		}
+//		imprimirMapa();
 	}	
 
-	private int[] posAleatoria() {
-		int[] pos = new int[2];
-		pos[0] = rand.nextInt(dimX);
-		pos[1] = rand.nextInt(dimY);
-		while (!mapa[pos[0]][pos[1]].isVacia()) {
-			pos[0] = rand.nextInt(dimX);
-			pos[1] = rand.nextInt(dimY);
+	public void colocarCasilla(Casilla casilla, int excpX, int excpY) {
+		int posX;
+		int posY;
+		while (true) {
+			posX = rand.nextInt(dimX-2);
+			posY = rand.nextInt(dimY-1);
+			
+			if ((posX == 0 || posY == 0) || (posX == 1)) {
+				continue;
+			}
+			// Verificamos si la nueva posicion no es la posicion que queremos evitar
+			if (posX == excpX && posY == excpY) {
+				continue;
+			}
+			// Verifficamos si la casilla que generamos esta vacia
+			if (mapa[posX][posY].isVacia()) {
+				// Verificamos si la casilla no se queda encerrada
+				if ((mapa[posX-1][posY].isVacia() || mapa[posX][posY-1].isVacia()) ||
+						(mapa[posX+1][posY].isVacia() || mapa[posX][posY+1].isVacia())){
+					break;
+				}
+			}
 		}
-		return pos;
+		
+//		Casilla cas = new Casilla();
+//		cas.setForma("   ");
+//		cas.setRevisada(true);
+//		cas.setX(excpX);
+//		cas.setY(excpY);
+//		mapa[excpX][excpY] = cas;
+		mapa[posX][posY] = casilla;
+		casilla.setX(posX);
+		casilla.setY(posY);
 	}
 
 	private void generarPared(int x, int y) {
@@ -188,7 +219,7 @@ public class Mapa {
 		while (!datosValidos) {
 			System.out.print("Ingrese Ancho del mapa: ");
 			dimX = sc.nextInt();
-			dimX += 2; 
+			dimX += 4; 
 			System.out.print("Ingrese Alto del mapa: ");
 			dimY = sc.nextInt();
 			dimY += 2;
@@ -199,5 +230,42 @@ public class Mapa {
 			}
 			System.out.println("Datos invalidos, por favor vuelva a ingresarlos");
 		}
+	}
+
+	public Casilla getCasilla(Pacman pacman, int x, int y) {
+		int posX = pacman.getX();
+		int posY = pacman.getY();
+		if (x >= dimX) {
+			x -= 1;
+		} 
+		else if (y >= dimY) {
+			y -= 1;
+		} 
+		else if (x < 0) {
+			x += 1;
+		} 
+		else if (y <= 0) {
+			y += 1;
+		}
+
+		System.out.println(x + ", " + y);
+		mapa[x][y].setX(x);
+		mapa[x][y].setY(y);
+		return mapa[x][y];
+	}
+
+	public void cambiarCasillas(Pacman pacman, Casilla sigCas) {
+		Casilla cas;
+		cas = sigCas;
+		mapa[sigCas.getX()][sigCas.getY()] = pacman;
+		mapa[pacman.getX()][pacman.getY()] = sigCas;
+		pacman.setX(cas.getX());
+		pacman.setY(cas.getY());
+		sigCas.setX(pacman.getX());
+		sigCas.setY(pacman.getY());
+	}
+
+	public int getDimX() {
+		return dimX;
 	}
 }

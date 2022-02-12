@@ -5,7 +5,6 @@ public class Historial {
 	private int edad;
 	private int puntaje;
 	private int movimientos;
-	private int total;
 	
 	public Historial(){
 		puntaje = 0;
@@ -33,13 +32,16 @@ public class Historial {
 	}
 
 	public static void imprimirH(Historial[] historial) {
-		System.out.println("*********************************");
 		for (int i = 0; i < 10; i++) {
-			System.out.println("Nombre: " + historial[i].getNombre());
-			System.out.println("Edad: " + historial[i].getEdad());
-			System.out.println("Puntaje: " + historial[i].getPuntaje());
-			System.out.println("Movimientos: " + historial[i].getMovimientos());
-			System.out.println("*********************************");
+			if (historial[i].getNombre()!=null) {
+				System.out.println("*********************************");
+				System.out.println("Nombre: " + historial[i].getNombre());
+				System.out.println("Edad: " + historial[i].getEdad());
+				System.out.println("Puntaje: " + historial[i].getPuntaje());
+				System.out.println("Movimientos: " + historial[i].getMovimientos());
+				System.out.println("*********************************");
+				
+			}
 		}
 		
 	}
@@ -70,5 +72,13 @@ public class Historial {
 	}
 	public int getTotal() {
 		return movimientos + puntaje;
+	}
+
+	public static void llenar(Historial[] historial) {
+		for (int i = 0; i < 11; i++) {
+			historial[i] = new Historial();
+		}
+
+		
 	}
 }

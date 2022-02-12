@@ -7,6 +7,7 @@ public class Pared extends Casilla{
 		this.setForma(forma);
 		this.setVacia(false);
 		this.setRevisada(true);
+		this.tipo = "pared";
 	}
 
 }
