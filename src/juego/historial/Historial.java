@@ -2,6 +2,8 @@ package juego.historial;
 
 import java.util.Scanner;
 
+import juego.colores.Colores;
+
 public class Historial {
 	private String nombre = "XXXXXXXX";
 	private int edad;
@@ -16,7 +18,7 @@ public class Historial {
 
 	public static Historial[] ordenarH(Historial[] historial, Historial entrada) {
 	    // Corremos el historial 1 a la izquierda
-	    for (int i = 1; i < 11; i++) {
+	    for (int i = 1; i < 20; i++) {
 	    	historial[i-1] = historial[i];
 	    }
 	    historial[10] = entrada;
@@ -25,14 +27,14 @@ public class Historial {
 	}
 
 	public static void imprimirH(Historial[] historial) {
-		System.out.println("*********************************");
-		for (int i = 1; i < 11; i++) {
+		System.out.println(Colores.GREEN + "*********************************" + Colores.RESET);
+		for (int i = 1; i < 20; i++) {
 			if (!historial[i].nombre.equals("XXXXXXXX")) {
-				System.out.println("Nombre: " + historial[i].getNombre());
-				System.out.println("Edad: " + historial[i].getEdad());
-				System.out.println("Puntaje: " + historial[i].getPuntaje());
-				System.out.println("Movimientos: " + historial[i].getMovimientos());
-				System.out.println("*********************************");
+				System.out.println(Colores.CYAN + "  Nombre: " +Colores.RESET+ Colores.RED + historial[i].getNombre() + Colores.RESET);
+				System.out.println(Colores.CYAN + "  Edad: " +Colores.RESET+ Colores.RED + historial[i].getEdad() + Colores.RESET);
+				System.out.println(Colores.CYAN + "  Puntaje: " +Colores.RESET+ Colores.RED + historial[i].getPuntaje() + Colores.RESET);
+				System.out.println(Colores.CYAN + "  Movimientos: " +Colores.RESET+ Colores.RED + historial[i].getMovimientos() + Colores.RESET);
+				System.out.println(Colores.GREEN + "*********************************" + Colores.RESET);
 			}
 		}
 		System.out.println("Ingresa cualquier caracter para salir");
@@ -70,7 +72,7 @@ public class Historial {
 	}
 
 	public static void llenar(Historial[] historial) {
-		for (int i = 0; i < 11; i++) {
+		for (int i = 0; i < 20; i++) {
 			historial[i] = new Historial();
 		}
 	}

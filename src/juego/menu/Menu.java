@@ -1,5 +1,7 @@
 package juego.menu;
 
+import juego.colores.Colores;
+
 public class Menu {
 	private boolean opcValida = false;
 	private String modo;
@@ -40,13 +42,13 @@ public class Menu {
 		for (int i = 0; i < 20; i++) {
 			System.out.println("");
 		}
-		System.out.println("*****************************************************");
-		System.out.println("*                BIENVENIDO A PAC-MAN!              *");
-		System.out.println("*****************************************************");
-		System.out.println("*   1. Jugar                                        *");
-		System.out.println("*   2. Historial                                    *");
-		System.out.println("*   3. Salir                                        *");
-		System.out.println("*****************************************************");
+		System.out.println(Colores.YELLOW + "*****************************************************" + Colores.RESET);
+		System.out.println(Colores.YELLOW  + "*    "  + Colores.RESET +"            BIENVENIDO A PAC-MAN!          " + Colores.YELLOW +"    *"+ Colores.RESET);
+		System.out.println(Colores.YELLOW + "*****************************************************" + Colores.RESET);
+		System.out.println(Colores.YELLOW  + "*   "  + Colores.RESET +"1. Jugar                                    " + Colores.YELLOW +"    *"+ Colores.RESET);
+		System.out.println(Colores.YELLOW  + "*   "  + Colores.RESET +"2. Historial                                " + Colores.YELLOW +"    *"+ Colores.RESET);
+		System.out.println(Colores.YELLOW  + "*   "  + Colores.RESET +"3. Salir                                    " + Colores.YELLOW +"    *"+ Colores.RESET);
+		System.out.println(Colores.YELLOW + "*****************************************************" + Colores.RESET);
 	}
 	
 	

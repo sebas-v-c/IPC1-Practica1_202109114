@@ -3,6 +3,7 @@ package juego.mapa;
 import java.util.Random;
 import java.util.Scanner;
 
+import juego.colores.Colores;
 import juego.mapa.casillas.Casilla;
 import juego.mapa.casillas.comida.Comida;
 import juego.mapa.casillas.pacman.Pacman;
@@ -30,8 +31,8 @@ public class Mapa {
 
 		// Llenar pared superior e inferior
 		for (int x = 0; x < dimX; x++) {
-			mapa[x][0] = new Pared("***");
-			mapa[x][dimY-1] = new Pared("***");
+			mapa[x][0] = new Pared(Colores.GREEN + "***" +  Colores.RESET);
+			mapa[x][dimY-1] = new Pared(Colores.GREEN + "***" + Colores.RESET);
 		}
 		// Llenar paredes laterales
 		for (int y = 0; y < dimY; y++) {
@@ -57,8 +58,8 @@ public class Mapa {
 			relleno.setVacia(false);
 			mapa[0][y] = relleno;
 			mapa[dimX-1][y] = relleno;
-			mapa[1][y] = new Pared("***");
-			mapa[dimX-2][y] = new Pared("***");
+			mapa[1][y] = new Pared(Colores.GREEN + "***" + Colores.RESET);
+			mapa[dimX-2][y] = new Pared(Colores.GREEN + "***" + Colores.RESET);
 		}
 		// Generamos paredes
 		for (int y = 1; y < (dimY-1); y++) {
@@ -70,19 +71,19 @@ public class Mapa {
 		}
 		// Vamos a establecer por lo menos la aparicion aleatoraia
 		// de 1 item de comida de cada uno
-		colocarCasilla(new Comida(-10, " # "), 0, 0);
-		colocarCasilla(new Comida(15, " $ "), 0, 0);
-		colocarCasilla(new Comida(10, " @ "), 0, 0);
+		colocarCasilla(new Comida(-10,Colores.RED +  " # " + Colores.RESET), 0, 0);
+		colocarCasilla(new Comida(15,Colores.CYAN + " $ " +Colores.RESET), 0, 0);
+		colocarCasilla(new Comida(10,Colores.BLUE + " @ " + Colores.RESET), 0, 0);
 		// Los demas items de comida seran aleatorios dependiendo del
 		// Tamanio de la matriz
 		for (int i = 0; i < dimX*dimY; i++) {
 			int num = rand.nextInt(COMIDA);
 			if (num == 0) {
-				colocarCasilla(new Comida(-10, " # "), 0, 0);
+				colocarCasilla(new Comida(-10,Colores.RED +  " # " + Colores.RESET), 0, 0);
 			} else if (num == 1) {
-				colocarCasilla( new Comida(15, " $ "), 0, 0);				
+				colocarCasilla(new Comida(15,Colores.CYAN + " $ " +Colores.RESET), 0, 0);
 			} else if (num == 2) {
-				colocarCasilla( new Comida(10, " @ "), 0, 0);
+				colocarCasilla(new Comida(10,Colores.BLUE + " @ " + Colores.RESET), 0, 0);
 			}
 		}
 	}	
@@ -162,9 +163,9 @@ public class Mapa {
 			int vecino;
 			if (numVecin != 0) {
 				vecino = rand.nextInt(numVecin);
-				mapa[x][y] = new Pared(" * ");
+				mapa[x][y] = new Pared(Colores.GREEN  + " * " + Colores.RESET);
 			} else {
-				mapa[x][y] = new Pared(" * ");
+				mapa[x][y] = new Pared(Colores.GREEN  + " * " + Colores.RESET);
 				return;
 			}
 			int posX = vecinDisp[vecino][0];

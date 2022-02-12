@@ -2,6 +2,7 @@ package juego.jugador;
 
 import java.util.Scanner;
 
+import juego.colores.Colores;
 import juego.historial.Historial;
 import juego.mapa.Mapa;
 import juego.mapa.casillas.Casilla;
@@ -51,24 +52,25 @@ public class Jugador {
 
 		while (true) {
 			if (punteo <= 0) {
-				System.out.println("Perdiste, Juego terminado :(");
+				System.out.println(Colores.RED + "Perdiste, Juego terminado :(" + Colores.RESET);
 				System.out.println("Ingresa cualquier cosa para continuar");
 				sc.next();
 				break;
 			} 
 			if (punteo > 100) {
-				System.out.println("Ganaste! " + nombre);
+				System.out.println(Colores.GREEN + "Ganaste! " + nombre + Colores.RESET);
 				System.out.println("Ingresa cualquier cosa para continuar");
 				sc.next();
 				break;
 			}
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			imprimirInfo();
 			mapa.imprimirMapa();
 			System.out.print("Ingresa un Movimiento (WASD o M): ");
 			letra = sc.nextLine();		
 			System.out.println(letra);
 			if (letra.equals("M") || letra.equals("m")) {
-				System.out.print("\nSeguro deseas selir del juego? (S/N): ");
+				System.out.print(Colores.RED + "\nSeguro deseas selir del juego? (S/N): " + Colores.RESET);
 				letra = sc.nextLine();		
 				if (letra.equals("s") || letra.equals("S")) {
 					System.out.println("Adios!");

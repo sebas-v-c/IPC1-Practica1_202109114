@@ -13,7 +13,7 @@ public class Main {
 		String opcion;
 		Menu menu = new Menu();
 		Scanner sc = new Scanner(System.in);
-		Historial[] historial = new Historial[11];
+		Historial[] historial = new Historial[20];
 		Historial.llenar(historial);
 
 		while (continuarJuego) {		
