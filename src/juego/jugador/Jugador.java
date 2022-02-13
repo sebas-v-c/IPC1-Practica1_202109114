@@ -44,11 +44,11 @@ public class Jugador {
 
 	public void jugar(Mapa mapa) {
 		String letra;
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		System.out.println("   Muevete con WASD");
 		System.out.println("   (pulsa M para salir)");
 		pacman = new Pacman(" V ");
 		mapa.colocarCasilla(pacman, pacman.getX(), pacman.getY());
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		imprimirInfo();
 		mapa.imprimirMapa();
 
@@ -127,7 +127,7 @@ public class Jugador {
 			movimientos++;
 		}
 		else if (sigCas.isCasEspecial()) {
-			System.out.println(Colores.CYAN + "Teletransportación!!" + Colores.RESET);
+			System.out.println(Colores.CYAN + "   Teletransportación!!" + Colores.RESET);
 			Casilla cas = new Casilla();
 			cas.setForma("   ");
 			cas.setY(sigCas.getY());

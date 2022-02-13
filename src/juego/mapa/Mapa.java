@@ -43,8 +43,11 @@ public class Mapa {
 				especial.setForma("   ");
 				especial.setRevisada(true);
 				especial.setVacia(false);
+				// Asignar la casilla especial a esa posicion
 				mapa[0][y] = especial;
 				mapa[dimX-1][y] = especial;
+				// Completo los parametros del nuevo relleno para la casilla
+				// Que precede la casilla especial
 				relleno.setForma("   ");
 				relleno.setRevisada(true);
 				mapa[1][y] =  relleno;
@@ -53,6 +56,7 @@ public class Mapa {
 				mapa[dimX-3][y].setRevisada(true);
 				continue;
 			}
+			// Relleno normal y no vacio en los laterales
 			relleno.setForma("   ");
 			relleno.setRevisada(true);
 			relleno.setVacia(false);
@@ -61,7 +65,7 @@ public class Mapa {
 			mapa[1][y] = new Pared(Colores.GREEN + "***" + Colores.RESET);
 			mapa[dimX-2][y] = new Pared(Colores.GREEN + "***" + Colores.RESET);
 		}
-		// Generamos paredes
+		// Generamos paredes internas
 		for (int y = 1; y < (dimY-1); y++) {
 			for (int x = 2; x < (dimX-2); x++) {
 				if (!mapa[x][y].isRevisada()) {
@@ -71,9 +75,9 @@ public class Mapa {
 		}
 		// Vamos a establecer por lo menos la aparicion aleatoraia
 		// de 1 item de comida de cada uno
-		colocarCasilla(new Comida(-10,Colores.RED +  " # " + Colores.RESET), 0, 0);
-		colocarCasilla(new Comida(15,Colores.CYAN + " $ " +Colores.RESET), 0, 0);
-		colocarCasilla(new Comida(10,Colores.BLUE + " @ " + Colores.RESET), 0, 0);
+		colocarCasilla(new Comida(-10, Colores.RED +  " # " + Colores.RESET), 0, 0);
+		colocarCasilla(new Comida(15, Colores.CYAN + " $ " +Colores.RESET), 0, 0);
+		colocarCasilla(new Comida(10, Colores.BLUE + " @ " + Colores.RESET), 0, 0);
 		// Los demas items de comida seran aleatorios dependiendo del
 		// Tamanio de la matriz
 		for (int i = 0; i < dimX*dimY; i++) {
@@ -125,7 +129,9 @@ public class Mapa {
 
 	private void generarPared(int x, int y) {
 		int num = rand.nextInt(PAREDES);
+		// Saber cuantos vecinos hay
 		int numVecin = contarVecinos(x, y);
+		// matriz de vecinos disponibles con sus posiciones
 		int[][] vecinDisp = new int[numVecin][2];
 		int cont = 0;
 		// Llenamos una array con coordenadas de vecinos dispobiles
@@ -158,8 +164,9 @@ public class Mapa {
 		 * Casilla como una casilla vacia y visitada
 		 */
 
+		// Si el numero aleatorio es 0, significa vamos a crear una pared
 		if (num == 0) {
-			// Vamos a seleccionar un vecino aleatorio de la array que creamos
+			// numero de vecinos no es 0
 			int vecino;
 			if (numVecin != 0) {
 				vecino = rand.nextInt(numVecin);
