@@ -227,7 +227,7 @@ public class Mapa {
 				datosValidos = true;
 				continue;
 			}
-			System.out.println("Datos invalidos, por favor vuelva a ingresarlos");
+			System.out.println("Datos inválidos, por favor vuelva a ingresarlos");
 		}
 	}
 

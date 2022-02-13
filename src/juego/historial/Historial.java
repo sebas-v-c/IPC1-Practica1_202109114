@@ -37,7 +37,7 @@ public class Historial {
 				System.out.println(Colores.GREEN + "*********************************" + Colores.RESET);
 			}
 		}
-		System.out.println("Ingresa cualquier caracter para salir");
+		System.out.println("Ingresa cualquier cosa para salir");
 		sc.next();
 		
 	}

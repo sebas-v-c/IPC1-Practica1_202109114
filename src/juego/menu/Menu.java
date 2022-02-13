@@ -10,7 +10,7 @@ public class Menu {
 		if ((!opcion.equals("1")) && (!opcion.equals("2")) && (!opcion.equals("3"))) {
 			opcValida = false;
 			mostrarMenu();
-			System.out.println("Opcion invalida!");
+			System.out.println("Ópcion invalida!");
 			return;
 		}
 		opcValida = true;
@@ -39,9 +39,7 @@ public class Menu {
 
 	public void mostrarMenu() {
 		opcValida = false;
-		for (int i = 0; i < 20; i++) {
-			System.out.println("");
-		}
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		System.out.println(Colores.YELLOW + "*****************************************************" + Colores.RESET);
 		System.out.println(Colores.YELLOW  + "*    "  + Colores.RESET +"            BIENVENIDO A PAC-MAN!          " + Colores.YELLOW +"    *"+ Colores.RESET);
 		System.out.println(Colores.YELLOW + "*****************************************************" + Colores.RESET);

@@ -1,5 +1,11 @@
 package juego.colores;
 
+/*
+ * Codigo obtenido de Steckoverflow 
+ * https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
+ * Respondido por WhiteFang34
+ */
+
 public class Colores {
 	public static final String RESET = "\u001B[0m";
 	public static final String BLACK = "\u001B[30m";

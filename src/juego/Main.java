@@ -23,7 +23,7 @@ public class Main {
 				menu.setModo(opcion);
 			}	
 			
-			limpiarConsola();
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			switch(menu.getModo()) {
 			case "Juego":
 				Mapa mapa = new Mapa();
@@ -43,10 +43,6 @@ public class Main {
 				break;
 			}
 		}
-		System.out.println("Adios!");
+		System.out.println("Adiós!");
 	}
-	
-	static void limpiarConsola() {
-		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	}	
 }
