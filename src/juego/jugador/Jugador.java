@@ -106,7 +106,7 @@ public class Jugador {
 				
 			default:
 				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-				System.out.println(Colores.RED + "Letra inválida!" + Colores.RESET);
+				System.out.println(Colores.RED + "   Letra inválida!" + Colores.RESET);
 				imprimirInfo();
 				mapa.imprimirMapa();
 			}
