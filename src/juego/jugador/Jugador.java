@@ -59,7 +59,7 @@ public class Jugador {
 				sc.next();
 				break;
 			} 
-			if (punteo > 100) {
+			if (punteo >= 100) {
 				System.out.println(Colores.GREEN + "   Ganaste! " + nombre + Colores.RESET);
 				System.out.println("   Ingresa cualquier cosa para continuar");
 				sc.next();
