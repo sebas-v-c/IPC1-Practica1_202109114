@@ -51,6 +51,9 @@ public class Jugador {
 		mapa.colocarCasilla(pacman, pacman.getX(), pacman.getY());
 
 		while (true) {
+			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+			imprimirInfo();
+			mapa.imprimirMapa();
 			if (punteo <= 0) {
 				System.out.println(Colores.RED + "Perdiste, Juego terminado :(" + Colores.RESET);
 				System.out.println("Ingresa cualquier cosa para continuar");
@@ -63,9 +66,6 @@ public class Jugador {
 				sc.next();
 				break;
 			}
-			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-			imprimirInfo();
-			mapa.imprimirMapa();
 			System.out.print("Ingresa un Movimiento (WASD o M): ");
 			letra = sc.nextLine();		
 			System.out.println(letra);
